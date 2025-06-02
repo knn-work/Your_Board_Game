@@ -1,2 +1,3 @@
-# Django_
-Django _Simple_Culinary_Blog
+# Django_Simple_Culinary_Blog
+
+Django + 
