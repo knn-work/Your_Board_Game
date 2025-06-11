@@ -1,0 +1,40 @@
+{% include "blog/base_head.html" %}
+
+{% include "blog/header_menu.html" %}
+
+<!-- Main body-->
+<main>
+    <h2>Кулинарный портал</h2>
+    <div class="d-flex justify-content-between">
+        <div class="col-3">
+            <!-- Sidebar-->
+            <div class="list-group">
+                <a href="#!" class="list-group-item list-group-item-action">Первая кнопка</a>
+                <a href="#!" class="list-group-item list-group-item-action">Вторая кнопка</a>
+                <a href="#!" class="list-group-item list-group-item-action">Третья кнопка</a>
+                <a href="#!" class="list-group-item list-group-item-action">Четвертая кнопка</a>
+                <a href="#!" class="list-group-item list-group-item-action">Пятая кнопка</a>
+                <a href="#!" class="list-group-item list-group-item-action">Шестая кнопка</a>
+            </div>
+        </div>
+        <!-- Posts-->
+        <div class="col-8">
+            <!-- Post-->
+             {% for post in posts %}
+                <div class="card text-center">
+                    <div class="card-header">{{post.category}}</div>
+                    <div class="card-body"><h5 class="card-title"> {{post.title}}</h5>
+                        <p class="card-text">{{post.content|truncatechars:100}}</p>
+                        <a href="#!" class="btn btn-primary">Перейти куда
+                            нибудь</a></div>
+                    <div class="card-footer text-muted">{{post.created_at}}</div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+{% include "blog/footer_base.html" %}

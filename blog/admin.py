@@ -1,13 +1,8 @@
 from django.contrib import admin
 
-from .admin_models.post_admin import PostAdmin
-from .models import Category, Post
-
-
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("id", "title")
-    list_display_links = ("id", "title")
-
+from blog.admin_models.category import CategoryAdmin
+from blog.admin_models.post import PostAdmin
+from blog.models import Post, Category
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Post, PostAdmin)
