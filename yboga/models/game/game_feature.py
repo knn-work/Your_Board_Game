@@ -14,3 +14,7 @@ class GameFeature(models.Model):
 
     def __str__(self) -> str:
         return f"{self.title} ({self.game.title})"
+
+    class Meta:
+        verbose_name = "Особенность"
+        verbose_name_plural = "Особенности"

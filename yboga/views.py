@@ -1,14 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 
 from yboga.models.category import Category
+from yboga.models.game.game import Game
 
 
 # Create your views here.
 def index(request):
-    context = {
-        "title": "Главная страница",
-    }
-    return render(request=request, context=context, template_name="index.html")
+    games = Game.objects.prefetch_related("categories").all()
+    return render(request, "index.html", {"games": games})
 
 
 def category_detail(request, slug: str):
@@ -33,3 +32,14 @@ def categories_view(request):
     categories = Category.objects.all()
     context = {"title": "Категории", "categories": categories}
     return render(request=request, context=context, template_name="categories.html")
+
+
+def game_detail(request, slug: str):
+    """
+    Детальная страница игры по slug.
+    """
+    game = get_object_or_404(Game, slug=slug)
+    context = {
+        "game": game,
+    }
+    return render(request, "game_detail.html", context)

@@ -14,3 +14,7 @@ class GameImage(models.Model):
 
     def __str__(self) -> str:
         return f"Изображение для {self.game.title}"
+
+    class Meta:
+        verbose_name = "Фото Игры"
+        verbose_name_plural = "Фотографии Игр"
