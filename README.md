@@ -1,9 +1,3 @@
-# Django_Simple_Culinary_Blog
+# YBoGa - Your Board Game Archive
 
-Django + 
-
-
-## env
-```
-
-```
+Ваш архив настольных игр
