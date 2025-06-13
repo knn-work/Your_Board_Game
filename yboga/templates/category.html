@@ -1,0 +1,35 @@
+{% include "base_head.html" %}
+
+{% include "header_menu.html" %}
+
+
+<main class="container mt-4 mb-5">
+
+    <h2 class="mb-4 text-center text-primary">{{ project_name }}</h2>
+
+    <h2 class="mb-3">{{ title }}</h2>
+    <p class="text-muted">{{ category.description }}</p>
+
+    {% if games %}
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for game in games %}
+        <div class="col">
+            <div class="card h-100">
+                {% if game.image %}
+                <img src="{{ game.image.url }}" class="card-img-top" alt="{{ game.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ game.title }}</h5>
+                    <p class="card-text">{{ game.description|truncatewords:20 }}</p>
+                </div>
+                <div class="card-footer text-end">
+                    <a href="{% url 'game_detail' game.slug %}" class="btn btn-primary btn-sm">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>В этой категории пока нет игр.</p>
+    {% endif %}
+</main>

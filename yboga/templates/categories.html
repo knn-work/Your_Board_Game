@@ -1,0 +1,40 @@
+{% include "base_head.html" %}
+
+{% include "header_menu.html" %}
+
+
+<main class="container mt-4 mb-5">
+
+    <!-- Название проекта -->
+    <h2 class="mb-4 text-center text-primary">{{ project_name }}</h2>
+
+    <!-- Заголовок страницы -->
+    <h3 class="mb-3">{{ title }}</h3>
+
+    <!-- Список категорий -->
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for category in categories %}
+        <div class="col">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-light">
+                    <strong>{{ category.title }}</strong>
+                    <small class="text-muted float-end">/ {{ category.slug }}</small>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ category.description|default:"Без описания" }}</p>
+                </div>
+                <div class="card-footer bg-white text-end">
+                    <a href="category/{{category.slug}}" class="btn btn-sm btn-outline-primary">Найти игры такие</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">Категории пока не добавлены.</p>
+        {% endfor %}
+    </div>
+
+</main>
+
+<!-- Подвал -->
+{% include "footer_base.html" %}

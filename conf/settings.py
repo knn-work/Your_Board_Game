@@ -1,16 +1,15 @@
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
+from conf import global_config
 
-load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = global_config.secret_key
 
-DEBUG = os.getenv("DEBUG")
+DEBUG = global_config.debug
 
 ALLOWED_HOSTS = []
 
@@ -25,7 +24,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "blog.apps.BlogConfig",  #
+    "yboga.apps.YbogaConfig",
 ]
 
 MIDDLEWARE = [
@@ -50,6 +49,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "conf.context_processors.global_context",  # Мой глобальный контекст
             ],
         },
     },
