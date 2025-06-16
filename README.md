@@ -3,6 +3,8 @@
 ![Static Badge](https://img.shields.io/badge/SQLite-lightblue)
 ![Static Badge](https://img.shields.io/badge/pydantic-pink)
 
+https://github.com/knn-work/Your_Board_Game_Archive/blob/main/screenshots/logo.png
+
 # 🎲 YBoGa — Your Board Games
 
 **YBoGa** (Your Board Games) — удобное веб-приложение для хранения информации о ваших настольных играх 🧩
