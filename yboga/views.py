@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 
 from yboga.models.category import Category
 from yboga.models.game.game import Game
+from yboga.models.publisher import Publisher
 
 
 # Create your views here.
@@ -28,6 +29,14 @@ def category_detail(request, slug: str):
 
 
 # Create your views here.
+def publishers_view(request):
+
+    publishers = Publisher.objects.prefetch_related("games").all()
+    context = {"title": "Издатели игр", "publishers": publishers}
+    return render(request=request, context=context, template_name="publishers.html")
+
+
+# Create your views here.
 def categories_view(request):
     categories = Category.objects.all()
     context = {"title": "Категории", "categories": categories}
@@ -43,3 +52,8 @@ def game_detail(request, slug: str):
         "game": game,
     }
     return render(request, "game_detail.html", context)
+
+
+def about(request):
+
+    return render(request, "about.html")

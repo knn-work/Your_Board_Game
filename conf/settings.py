@@ -5,6 +5,8 @@ from conf import global_config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = "/media/"
+STATIC_URL = "/static/"
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 SECRET_KEY = global_config.secret_key
@@ -12,6 +14,7 @@ SECRET_KEY = global_config.secret_key
 DEBUG = global_config.debug
 
 ALLOWED_HOSTS = []
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
 # Application definition
@@ -102,8 +105,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

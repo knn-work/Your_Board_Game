@@ -1,0 +1,89 @@
+/* Тёмная тема: светлый текст для всего контента */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #121212;
+    --bs-body-color: #ddd; /* светло-серый текст */
+    --bs-navbar-bg: #1e1e1e;
+    --bs-navbar-color: #ddd; /* светлый цвет текста в navbar */
+    --bs-navbar-hover-color: #fff; /* белый при наведении */
+    --bs-border-color: #444;
+    --bs-link-color: #9ecbff;
+    --bs-link-hover-color: #fff;
+    --bs-dropdown-bg: #232323;
+    --bs-dropdown-link-color: #ccc;
+    --bs-dropdown-link-hover-bg: #2e2e2e;
+    --bs-dropdown-divider-bg: #444;
+}
+
+[data-bs-theme="dark"] body,
+[data-bs-theme="dark"] .container,
+[data-bs-theme="dark"] main,
+[data-bs-theme="dark"] footer {
+    color: var(--bs-body-color) !important;
+    background-color: var(--bs-body-bg) !important;
+}
+
+[data-bs-theme="dark"] .navbar {
+    background-color: var(--bs-navbar-bg) !important;
+    color: var(--bs-navbar-color);
+}
+
+[data-bs-theme="dark"] .navbar-nav .nav-link {
+    color: var(--bs-navbar-color) !important;
+    transition: color 0.3s ease;
+}
+
+[data-bs-theme="dark"] .navbar-nav .nav-link:hover,
+[data-bs-theme="dark"] .navbar-nav .nav-link.active {
+    color: var(--bs-navbar-hover-color) !important;
+    font-weight: 600;
+}
+
+[data-bs-theme="dark"] .form-control {
+    background-color: #2a2a2a !important;
+    color: #eee !important;
+    border-color: #555 !important;
+}
+
+[data-bs-theme="dark"] .form-control::placeholder {
+    color: #bbb !important;
+}
+
+[data-bs-theme="dark"] .dropdown-menu {
+    background-color: var(--bs-dropdown-bg) !important;
+    color: var(--bs-dropdown-link-color) !important;
+    border-color: var(--bs-border-color) !important;
+}
+
+[data-bs-theme="dark"] .dropdown-menu .dropdown-item {
+    color: var(--bs-dropdown-link-color) !important;
+}
+
+[data-bs-theme="dark"] .dropdown-menu .dropdown-item:hover {
+    background-color: var(--bs-dropdown-link-hover-bg) !important;
+    color: var(--bs-dropdown-link-hover-bg) !important;
+}
+
+/* Тёмная тема - стиль для navbar пунктов меню */
+[data-bs-theme="dark"] .navbar-nav .nav-link {
+    color: #aaa !important; /* светло-серый по умолчанию */
+    transition: color 0.3s ease;
+}
+
+[data-bs-theme="dark"] .navbar-nav .nav-link.active {
+    color: #eee !important; /* светло-серый/почти белый при выборе или наведении */
+    font-weight: 600;
+}
+[data-bs-theme="dark"] .navbar-nav .nav-link:hover {
+    color: #eee !important; /* светло-серый/почти белый при выборе или наведении */
+    font-weight: 600;
+}
+
+/* Светлая тема — синий цвет */
+[data-bs-theme="light"] .project-name {
+    color: #0d6efd; /* bootstrap primary blue */
+}
+
+/* Тёмная тема — почти белый */
+[data-bs-theme="dark"] .project-name {
+    color: #eee;
+}

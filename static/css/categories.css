@@ -1,0 +1,68 @@
+/* Тёмная тема для страницы с категориями */
+
+[data-bs-theme="dark"] main.container {
+    background-color: var(--bs-body-bg); /* тёмный фон основного контейнера */
+    color: var(--bs-body-color);
+}
+
+/* Заголовок страницы — сделать белым */
+[data-bs-theme="dark"] h3.mb-3.text-secondary {
+    color: #eee !important;
+}
+
+/* Карточки */
+[data-bs-theme="dark"] .card {
+    background-color: #1f1f1f; /* темный фон, отличающийся от основного */
+    border: 1px solid #eee; /* белая рамка */
+    color: #eee;
+}
+
+/* Убрать светлый фон header и footer карточек */
+[data-bs-theme="dark"] .card-header,
+[data-bs-theme="dark"] .card-footer {
+    background-color: transparent !important;
+    color: #eee;
+    border-bottom: 1px solid #444; /* тонкая граница под header */
+}
+
+/* Текст в карточках */
+[data-bs-theme="dark"] .card-text,
+[data-bs-theme="dark"] .text-muted {
+    color: #ccc !important; /* чуть светлее, но не белый */
+}
+
+/* Кнопка в карточке — можно чуть ярче */
+[data-bs-theme="dark"] .btn-outline-primary {
+    color: #9ecbff;
+    border-color: #9ecbff;
+}
+
+[data-bs-theme="dark"] .btn-outline-primary:hover {
+    background-color: #9ecbff;
+    color: #121212;
+}
+
+/* Чтобы текст заголовка категории был белым */
+[data-bs-theme="dark"] .card-header strong {
+    color: #eee;
+}
+
+/* Чтобы мелкий текст в header карточки был светлым */
+[data-bs-theme="dark"] .card-header small {
+    color: #aaa;
+}
+
+/* Текст пустого состояния */
+[data-bs-theme="dark"] p.text-muted {
+    color: #bbb !important;
+}
+
+/* Светлая тема — синий цвет */
+[data-bs-theme="dark"] .game-tag {
+    color: #eee; /* bootstrap primary blue */
+}
+
+/* Тёмная тема — почти белый */
+[data-bs-theme="light"]  .game-tag {
+    color: #aaa;
+}

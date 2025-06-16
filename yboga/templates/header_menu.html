@@ -1,57 +1,57 @@
-<body>
 <div class="container">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm rounded">
-            <div class="container-fluid">
-                <!-- Логотип и название -->
-                <a class="navbar-brand d-flex align-items-center" href="/">
-                    <img src="/media/static/img/logo_clear.png" alt="Логотип" width="70" height="70" class="me-2">
-                    <span class="fw-bold">{{ project_name }}</span>
+        <nav class="navbar navbar-expand-lg shadow-sm rounded px-3 border"
+             data-bs-theme="light" id="main-navbar">
+            <div class="container-fluid flex-wrap">
+
+                <!-- Логотип -->
+                <a class="navbar-brand d-flex align-items-center me-4" href="/">
+                    <img src="/media/static/img/logo_clear.png" alt="Логотип" width="60" height="60"
+                         class="me-2 rounded">
+                    <span class="fw-bold fs-5 project-name">{{ project_name }}</span>
                 </a>
 
-                <!-- Кнопка для мобилки -->
+                <!-- Бургер -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarContent" aria-controls="navbarContent"
                         aria-expanded="false" aria-label="Переключатель навигации">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- Меню -->
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <!--                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
-                    <!--                        <li class="nav-item">-->
-                    <!--                            <a class="nav-link active" href="/">Главная</a>-->
-                    <!--                        </li>-->
-                    <!--                        <li class="nav-item">-->
-                    <!--                            <a class="nav-link" href="/categories">Категории</a>-->
-                    <!--                        </li>-->
-                    <!--                        <li class="nav-item">-->
-                    <!--                            <a class="nav-link" href="/about">О проекте</a>-->
-                    <!--                        </li>-->
-                    <!--                    </ul>-->
+                <!-- Контент навигации -->
+                <div class="collapse navbar-collapse flex-grow-1" id="navbarContent">
+
+                    <!-- Меню -->
                     {% include "navbar_menu.html" %}
 
                     <!-- Поиск -->
-                    <form class="d-flex me-3" role="search" method="get" action="/search/">
-                        <input name="q" class="form-control me-2" type="search" placeholder="Поиск игр..."
+                    <form class="d-flex me-3 mb-2 mb-lg-0" role="search" method="get" action="/search/">
+                        <input name="q" class="form-control me-2" type="search" placeholder="🔍 Поиск игр..."
                                aria-label="Поиск">
-                        <button class="btn btn-outline-primary" type="submit">Поиск</button>
+                        <button class="btn btn-outline-primary" type="submit">Искать</button>
                     </form>
 
-                    <!-- Профиль пользователя -->
-                    <ul class="navbar-nav">
+                    <!-- Тема -->
+                    <button id="theme-toggle" class="btn btn-outline-secondary btn-sm me-3 mb-2 mb-lg-0"
+                            title="Переключить тему">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+
+                    <!-- Профиль -->
+                    <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button"
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userMenu"
+                               role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle"></i> info
+                                <i class="bi bi-person-circle me-1 fs-5"></i> info
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
-                                <li><a class="dropdown-item" href="/profile/">Моя страница</a></li>
-                                <li><a class="dropdown-item" href="/articles/add/">Добавить статью</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="/profile/">👤 Моя страница</a></li>
+                                <li><a class="dropdown-item" href="/articles/add/">➕ Добавить статью</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/logout/">Выход</a></li>
+                                <li><a class="dropdown-item" href="/logout/">🚪 Выход</a></li>
                             </ul>
                         </li>
                     </ul>

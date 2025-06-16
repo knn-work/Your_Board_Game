@@ -12,6 +12,11 @@
                     📂 Категории
                 </a>
             </div>
+            <div class="list-group shadow-sm">
+                <a href="{% url 'publishers' %}" class="list-group-item list-group-item-action">
+                    ✍️ Издатели
+                </a>
+            </div>
         </aside>
 
         <!-- Game cards -->
@@ -36,7 +41,7 @@
                                 {% if game.categories.all %}
                                 <div class="mb-2">
                                     {% for category in game.categories.all %}
-                                    <span class="badge bg-secondary me-1">{{ category.title }}</span>
+                                    <span class="badge bg-secondary me-1 game-tag">{{ category.title }}</span>
                                     {% endfor %}
                                 </div>
                                 {% endif %}
