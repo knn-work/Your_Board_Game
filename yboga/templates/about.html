@@ -1,7 +1,6 @@
-{% include "base_head.html" %}
-{% include "header_menu.html" %}
+{% extends 'base.html' %}
 
-{% block content %}
+{% block main %}
 <div class="container py-4">
     <h1 class="mb-4">🎲 О проекте <span class="text-primary">{{ project_name }}</span></h1>
 
@@ -35,6 +34,4 @@
         Спасибо, что выбираете <strong>YBoGa</strong> — ваш надёжный спутник в мире настольных игр! 🚀🎉
     </div>
 </div>
-{% endblock %}
-
-{% include "footer_base.html" %}
+{% endblock main %}

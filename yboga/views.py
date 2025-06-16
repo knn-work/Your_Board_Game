@@ -8,7 +8,14 @@ from yboga.models.publisher import Publisher
 # Create your views here.
 def index(request):
     games = Game.objects.prefetch_related("categories").all()
-    return render(request, "index.html", {"games": games})
+    return render(
+        request,
+        "index.html",
+        {
+            "games": games,
+            "title": "Главная",
+        },
+    )
 
 
 def category_detail(request, slug: str):
@@ -56,4 +63,10 @@ def game_detail(request, slug: str):
 
 def about(request):
 
-    return render(request, "about.html")
+    return render(
+        request,
+        "about.html",
+        {
+            "title": "О нас",
+        },
+    )

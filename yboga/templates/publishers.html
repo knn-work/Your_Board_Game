@@ -1,8 +1,6 @@
-{% include "base_head.html" %}
-{% include "header_menu.html" %}
+{% extends 'base.html' %}
 
-<main class="container mt-4 mb-5">
-
+{% block main %}
     <!-- Название проекта -->
     <h2 class="mb-4 text-center"
         style="font-weight: 700; background: linear-gradient(to right, #0d6efd, #6610f2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
@@ -50,18 +48,4 @@
         {% endfor %}
     </div>
 
-</main>
-
-{% include "footer_base.html" %}
-
-<style>
-    /* Hover эффект для карточек */
-    .hover-shadow:hover {
-        transform: scale(1.015);
-        box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .transition {
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    }
-</style>
+{% endblock main %}

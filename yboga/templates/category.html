@@ -1,6 +1,6 @@
-{% include "base_head.html" %}
-{% include "header_menu.html" %}
+{% extends 'base.html' %}
 
+{% block main %}
 <main class="container mt-4 mb-5">
 
     <!-- Название проекта с градиентом -->
@@ -39,19 +39,6 @@
     <p class="text-muted">В этой категории пока нет игр.</p>
     {% endif %}
 
-</main>
 
-{% include "footer_base.html" %}
 
-<style>
-    /* Hover эффект для карточек */
-    .hover-shadow:hover {
-        transform: scale(1.02);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .transition {
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-</style>
+{% endblock main %}

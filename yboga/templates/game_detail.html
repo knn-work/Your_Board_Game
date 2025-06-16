@@ -1,120 +1,116 @@
-{% include "base_head.html" %}
+{% extends 'base.html' %}
 
-{% include "header_menu.html" %}
+{% block main %}
 
 
-<main class="container mt-4 mb-5">
-
-    <!-- Название и обложка -->
-    <div class="row mb-4">
-        <div class="col-md-4">
-            {% if game.image %}
-            <img src="{{ game.image.url }}" alt="{{ game.title }}" class="img-fluid rounded shadow-sm">
-            {% else %}
-            <div class="bg-light text-muted text-center p-5 rounded">
-                <small>Нет изображения</small>
-            </div>
-            {% endif %}
+<!-- Название и обложка -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        {% if game.image %}
+        <img src="{{ game.image.url }}" alt="{{ game.title }}" class="img-fluid rounded shadow-sm">
+        {% else %}
+        <div class="bg-light text-muted text-center p-5 rounded">
+            <small>Нет изображения</small>
         </div>
-        <div class="col-md-8">
-            <h2>{{ game.title }}</h2>
-            {% if game.release_date %}
-            <p class="text-muted">Дата выхода: {{ game.release_date }}</p>
-            {% endif %}
-            <p>{{ game.description }}</p>
-            <p>
-                <strong>Категории:</strong>
-                {% for category in game.categories.all %}
-                <span class="badge bg-secondary">{{ category.title }}</span>
-                {% empty %}
-                <span class="text-muted">Без категории</span>
-                {% endfor %}
-            </p>
-            {% if game.publisher %}
-            <p><strong>Издатель:</strong> {{ game.publisher }}</p>
-            {% endif %}
-        </div>
+        {% endif %}
     </div>
-
-    <!-- Особенности игры -->
-    {% if game.features.all %}
-    <section class="mb-4">
-        <h4>Особенности игры</h4>
-        <ul class="list-group">
-            {% for feature in game.features.all %}
-            <li class="list-group-item">
-                <strong>{{ feature.title }}</strong><br>
-                <small>{{ feature.description }}</small>
-            </li>
+    <div class="col-md-8">
+        <h2>{{ game.title }}</h2>
+        {% if game.release_date %}
+        <p class="text-muted">Дата выхода: {{ game.release_date }}</p>
+        {% endif %}
+        <p>{{ game.description }}</p>
+        <p>
+            <strong>Категории:</strong>
+            {% for category in game.categories.all %}
+            <span class="badge bg-secondary">{{ category.title }}</span>
+            {% empty %}
+            <span class="text-muted">Без категории</span>
             {% endfor %}
-        </ul>
-    </section>
-    {% endif %}
+        </p>
+        {% if game.publisher %}
+        <p><strong>Издатель:</strong> {{ game.publisher }}</p>
+        {% endif %}
+    </div>
+</div>
 
-    <!-- Состав игры -->
-    {% if game.components.all %}
-    <section class="mb-4">
-        <h4>Состав игры</h4>
-        <div class="row row-cols-1 row-cols-md-3 g-3">
-            {% for component in game.components.all %}
-            <div class="col">
-                <div class="card h-100 text-center">
-                    {% if component.image %}
-                    <img src="{{ component.image.url }}" class="card-img-top" alt="{{ component.name }}">
-                    {% endif %}
-                    <div class="card-body">
-                        <h6 class="card-title">{{ component.name }}</h6>
-                        <p class="card-text">Количество: {{ component.quantity }}</p>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-    {% endif %}
+<!-- Особенности игры -->
+{% if game.features.all %}
+<section class="mb-4">
+    <h4>Особенности игры</h4>
+    <ul class="list-group">
+        {% for feature in game.features.all %}
+        <li class="list-group-item">
+            <strong>{{ feature.title }}</strong><br>
+            <small>{{ feature.description }}</small>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
 
-    <!-- Дополнительные изображения -->
-    {% if game.photos.all %}
-    <section class="mb-4">
-        <h4>Изображения игры</h4>
-        <div class="row row-cols-2 row-cols-md-4 g-3">
-            {% for photo in game.photos.all %}
-            <div class="col">
-                <img src="{{ photo.image.url }}" class="img-fluid rounded shadow-sm" alt="{{ photo.caption }}">
-                {% if photo.caption %}
-                <small class="d-block text-muted text-center mt-1">{{ photo.caption }}</small>
+<!-- Состав игры -->
+{% if game.components.all %}
+<section class="mb-4">
+    <h4>Состав игры</h4>
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        {% for component in game.components.all %}
+        <div class="col">
+            <div class="card h-100 text-center">
+                {% if component.image %}
+                <img src="{{ component.image.url }}" class="card-img-top" alt="{{ component.name }}">
                 {% endif %}
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-    {% endif %}
-
-    <!-- Дополнения -->
-    {% if game.expansions.all %}
-    <section class="mb-4">
-        <h4>Дополнения</h4>
-        <div class="row row-cols-1 row-cols-md-2 g-3">
-            {% for expansion in game.expansions.all %}
-            <div class="col">
-                <div class="card h-100">
-                    {% if expansion.image %}
-                    <img src="{{ expansion.image.url }}" class="card-img-top" alt="{{ expansion.title }}">
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ expansion.title }}</h5>
-                        <p class="card-text">{{ expansion.description|truncatewords:30 }}</p>
-                        {% if expansion.release_date %}
-                        <p class="text-muted"><small>Дата выхода: {{ expansion.release_date }}</small></p>
-                        {% endif %}
-                    </div>
+                <div class="card-body">
+                    <h6 class="card-title">{{ component.name }}</h6>
+                    <p class="card-text">Количество: {{ component.quantity }}</p>
                 </div>
             </div>
-            {% endfor %}
         </div>
-    </section>
-    {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
 
-</main>
+<!-- Дополнительные изображения -->
+{% if game.photos.all %}
+<section class="mb-4">
+    <h4>Изображения игры</h4>
+    <div class="row row-cols-2 row-cols-md-4 g-3">
+        {% for photo in game.photos.all %}
+        <div class="col">
+            <img src="{{ photo.image.url }}" class="img-fluid rounded shadow-sm" alt="{{ photo.caption }}">
+            {% if photo.caption %}
+            <small class="d-block text-muted text-center mt-1">{{ photo.caption }}</small>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
 
-{% include "footer_base.html" %}
+<!-- Дополнения -->
+{% if game.expansions.all %}
+<section class="mb-4">
+    <h4>Дополнения</h4>
+    <div class="row row-cols-1 row-cols-md-2 g-3">
+        {% for expansion in game.expansions.all %}
+        <div class="col">
+            <div class="card h-100">
+                {% if expansion.image %}
+                <img src="{{ expansion.image.url }}" class="card-img-top" alt="{{ expansion.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ expansion.title }}</h5>
+                    <p class="card-text">{{ expansion.description|truncatewords:30 }}</p>
+                    {% if expansion.release_date %}
+                    <p class="text-muted"><small>Дата выхода: {{ expansion.release_date }}</small></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{% endblock main %}
