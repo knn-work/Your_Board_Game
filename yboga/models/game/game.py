@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Optional
 
 from django.db import models
 from django.utils.text import slugify
@@ -12,7 +12,7 @@ class Game(models.Model):
     Модель основной игры.
 
     Хранит данные об изображении, названии, описании, дате выхода,
-    связанных категориях и временных метках создания/обновления.
+    связанных категориях, количестве игроков, издателе и временных метках.
     """
 
     image = models.ImageField(
@@ -24,12 +24,18 @@ class Game(models.Model):
     )
     description = models.TextField(verbose_name="Описание", blank=True)
     release_date = models.DateField(verbose_name="Дата выхода", null=True, blank=True)
+
+    # Ограничения по количеству игроков (могут отсутствовать)
+    min_players = models.PositiveIntegerField(
+        verbose_name="Минимум игроков", null=True, blank=True
+    )
+    max_players = models.PositiveIntegerField(
+        verbose_name="Максимум игроков", null=True, blank=True
+    )
+
     categories = models.ManyToManyField(
         Category, related_name="games", verbose_name="Категории"
     )
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Добавлено")
-    updated_at = models.DateTimeField(auto_now=True, verbose_name="Обновлено")
-
     publisher = models.ForeignKey(
         Publisher,
         on_delete=models.SET_NULL,
@@ -38,6 +44,9 @@ class Game(models.Model):
         related_name="games",
         verbose_name="Издатель",
     )
+
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Добавлено")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Обновлено")
 
     class Meta:
         verbose_name = "Игра"
@@ -53,3 +62,16 @@ class Game(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    def players_range(self) -> Optional[str]:
+        """
+        Возвращает строковое представление диапазона игроков.
+        Например: "2–4 игрока" или None, если не указано.
+        """
+        if self.min_players and self.max_players:
+            return f"{self.min_players}–{self.max_players} игроков"
+        elif self.min_players:
+            return f"от {self.min_players} игроков"
+        elif self.max_players:
+            return f"до {self.max_players} игроков"
+        return None

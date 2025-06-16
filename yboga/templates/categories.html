@@ -1,31 +1,33 @@
 {% include "base_head.html" %}
-
 {% include "header_menu.html" %}
-
 
 <main class="container mt-4 mb-5">
 
     <!-- Название проекта -->
-    <h2 class="mb-4 text-center text-primary">{{ project_name }}</h2>
+    <h2 class="mb-4 text-center"
+        style="font-weight: 700; background: linear-gradient(to right, #0d6efd, #6610f2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        🎲 {{ project_name }}
+    </h2>
 
     <!-- Заголовок страницы -->
-    <h3 class="mb-3">{{ title }}</h3>
+    <h3 class="mb-3 text-secondary"><strong>{{ title }}</strong></h3>
 
     <!-- Список категорий -->
     <div class="row row-cols-1 row-cols-md-2 g-4">
         {% for category in categories %}
         <div class="col">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-header bg-light">
-                    <strong>{{ category.title }}</strong>
-                    <small class="text-muted float-end">/ {{ category.slug }}</small>
+            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <strong>📂 {{ category.title }}</strong>
+                    <small class="text-muted">/{{ category.slug }}</small>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ category.description|default:"Без описания" }}</p>
+                    <p class="card-text text-muted">{{ category.description|default:"Без описания" }}</p>
                 </div>
                 <div class="card-footer bg-white text-end">
-                    <a href="category/{{category.slug}}" class="btn btn-sm btn-outline-primary">Найти игры такие</a>
+                    <a href="{% url 'category_detail' category.slug %}" class="btn btn-sm btn-outline-primary">
+                        🔎 Игры в категории
+                    </a>
                 </div>
             </div>
         </div>
@@ -36,5 +38,16 @@
 
 </main>
 
-<!-- Подвал -->
 {% include "footer_base.html" %}
+
+<style>
+    /* Hover эффект для карточек */
+    .hover-shadow:hover {
+        transform: scale(1.015);
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .transition {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+</style>
