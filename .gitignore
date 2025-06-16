@@ -195,4 +195,3 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 */migrations/*
-/media/*

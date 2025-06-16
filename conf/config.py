@@ -34,7 +34,7 @@ class Config(BaseSettings):
     project_host: str
     project_port: int
     secret_key: str
-    pg: PG
+    # pg: PG
 
     @property
     def debug(self) -> bool:

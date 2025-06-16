@@ -57,6 +57,7 @@ def game_detail(request, slug: str):
     game = get_object_or_404(Game, slug=slug)
     context = {
         "game": game,
+        "title": game.title,
     }
     return render(request, "game_detail.html", context)
 
