@@ -11,4 +11,10 @@ def global_context(request):
             {"title": "Категории", "url": "/categories", "icon": "bi-grid"},
             {"title": "О проекте", "url": "/about", "icon": "bi-info-circle"},
         ],
+        "dropdown_menu": [
+            {"title": "👤 Моя страница", "url": "/", "icon": "bi-house"},
+            {"title": "➕ Добавить игру", "url": "/add_game", "icon": "bi-house"},
+            {"title": "dropdown-divider"},
+            {"title": "🚪 Выход", "url": "/", "icon": "bi-house"},
+        ],
     }

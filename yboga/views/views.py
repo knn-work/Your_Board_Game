@@ -63,7 +63,6 @@ def game_detail(request, slug: str):
 
 
 def about(request):
-
     return render(
         request,
         "about.html",

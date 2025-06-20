@@ -45,13 +45,22 @@
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle me-1 fs-5"></i> info
                             </a>
+
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="/profile/">👤 Моя страница</a></li>
-                                <li><a class="dropdown-item" href="/articles/add/">➕ Добавить статью</a></li>
+                                {% for item in dropdown_menu %}
+                                {% if item.title == "dropdown-divider" %}
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/logout/">🚪 Выход</a></li>
+                                {% else %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ item.url }}">
+                                        {{ item.title }}
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+
                             </ul>
                         </li>
                     </ul>
