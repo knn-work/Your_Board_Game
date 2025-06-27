@@ -43,7 +43,12 @@
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userMenu"
                                role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle me-1 fs-5"></i> info
+                                <i class="bi bi-person-circle me-1 fs-5"></i>
+                                {% if request.user.is_authenticated %}
+                                {{request.user.username}}
+                                {% else %}
+                                info
+                                {% endif %}
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">

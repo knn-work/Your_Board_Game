@@ -17,8 +17,9 @@ def user_auth(request):
     else:
         form = LoginForm()
 
-        context = {"title": "Авторизация", "form": form}
-        return render(request, "user_auth_form.html", context=context)
+    # Важно: рендерим форму даже если POST не прошёл валидацию
+    context = {"title": "Авторизация", "form": form}
+    return render(request, "user_auth_form.html", context=context)
 
 
 def user_logout(request):

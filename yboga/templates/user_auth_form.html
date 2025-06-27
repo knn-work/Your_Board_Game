@@ -9,6 +9,14 @@
     <form method="post" class="card p-4 shadow-sm" novalidate>
         {% csrf_token %}
 
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {% for error in form.non_field_errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
+
         {% for field in form %}
         <div class="mb-3">
             <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
@@ -24,5 +32,6 @@
 
         <button type="submit" class="btn btn-primary">Войти</button>
     </form>
+
 </section>
 {% endblock main %}
