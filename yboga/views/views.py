@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+import random
+
+from django.shortcuts import render, get_object_or_404, redirect
 
 from yboga.models.category import Category
 from yboga.models.game.game import Game
@@ -70,3 +72,16 @@ def about(request):
             "title": "О нас",
         },
     )
+
+
+def random_game(request):
+    """
+    Выбирает случайную игру и делает редирект на её страницу.
+    """
+    slugs = Game.objects.values_list("slug", flat=True)
+    if not slugs:
+        # Можно сделать редирект на главную или страницу с сообщением
+        return redirect("index")  # или вернуть 404
+    random_slug = random.choice(slugs)
+
+    return redirect("game_detail", slug=random_slug)

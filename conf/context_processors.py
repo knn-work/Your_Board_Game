@@ -7,14 +7,15 @@ def global_context(request):
         "project_name": global_config.project_name,
         # Можешь добавить сюда меню, данные из settings, и т.д.
         "main_menu": [
-            {"title": "Главная", "url": "/", "icon": "bi-house"},
-            {"title": "Категории", "url": "/categories", "icon": "bi-grid"},
-            {"title": "О проекте", "url": "/about", "icon": "bi-info-circle"},
+            {"title": "Главная 🏠", "url": "/"},
+            {"title": "Категории 📂", "url": "/categories"},
+            {"title": "Случайная игра 🎲", "url": "/random"},
+            {"title": "О проекте ℹ️", "url": "/about"},
         ],
         "dropdown_menu": [
-            {"title": "👤 Моя страница", "url": "/", "icon": "bi-house"},
-            {"title": "➕ Добавить игру", "url": "/add_game", "icon": "bi-house"},
+            {"title": "👤 Моя страница", "url": "/"},
+            {"title": "➕ Добавить игру", "url": "/add_game"},
             {"title": "dropdown-divider"},
-            {"title": "🚪 Выход", "url": "/", "icon": "bi-house"},
+            {"title": "🚪 Выход", "url": "/"},
         ],
     }

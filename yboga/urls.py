@@ -8,6 +8,7 @@ from yboga.views.views import (
     game_detail,
     about,
     publishers_view,
+    random_game,
 )
 
 urlpatterns = [
@@ -15,6 +16,7 @@ urlpatterns = [
     path("category/<slug:slug>/", category_detail, name="category_detail"),
     path("game/<slug:slug>/", game_detail, name="game_detail"),
     path("categories", categories_view, name="categories"),
+    path("random", random_game, name="random_game"),
     path("publishers", publishers_view, name="publishers"),
     path("add_game", add_game, name="add_game"),
     path("about", about, name="about"),
