@@ -21,6 +21,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 INSTALLED_APPS = [
     "jazzmin",
+    "widget_tweaks",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

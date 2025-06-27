@@ -1,7 +1,7 @@
 from django.forms import inlineformset_factory
 from django.shortcuts import render, redirect
 
-from yboga.forms import GameAddForm
+from yboga.forms.game_add_form import GameAddForm
 from yboga.models.game.game import Game
 from yboga.models.game.game_component import GameComponent
 from yboga.models.game.game_image import GameImage

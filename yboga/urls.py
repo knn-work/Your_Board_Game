@@ -1,5 +1,6 @@
 from django.urls import path
 
+from yboga.views.forms.auth import user_auth, user_logout
 from yboga.views.forms.user_add_game_form import add_game
 from yboga.views.views import (
     index,
@@ -20,4 +21,6 @@ urlpatterns = [
     path("publishers", publishers_view, name="publishers"),
     path("add_game", add_game, name="add_game"),
     path("about", about, name="about"),
+    path("login", user_auth, name="user_auth"),
+    path("logout", user_logout, name="user_logout"),
 ]

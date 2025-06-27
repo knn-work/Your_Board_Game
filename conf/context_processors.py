@@ -13,9 +13,11 @@ def global_context(request):
             {"title": "О проекте ℹ️", "url": "/about"},
         ],
         "dropdown_menu": [
-            {"title": "👤 Моя страница", "url": "/"},
-            {"title": "➕ Добавить игру", "url": "/add_game"},
+            {"title": "👤 Моя страница", "url": "/", "auth": True},
+            {"title": "➕ Добавить игру", "url": "/add_game", "auth": True},
+            {"title": "➕👤 Зарегистрироваться", "url": "/login", "auth": False},
             {"title": "dropdown-divider"},
-            {"title": "🚪 Выход", "url": "/"},
+            {"title": "🚪 Войти", "url": "/login", "auth": False},
+            {"title": "🚪 Выход", "url": "/logout", "auth": True},
         ],
     }

@@ -10,7 +10,7 @@ class GameAddForm(forms.ModelForm):
 
     class Meta:
         model = Game
-        fields = [
+        fields = (
             "title",
             "slug",
             "image",
@@ -20,7 +20,7 @@ class GameAddForm(forms.ModelForm):
             "max_players",
             "categories",
             "publisher",
-        ]
+        )
         widgets = {
             "title": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Название игры"}

@@ -53,15 +53,24 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 {% else %}
+                                {% if item.auth %}
+                                {% if request.user.is_authenticated %}
                                 <li>
-                                    <a class="dropdown-item" href="{{ item.url }}">
-                                        {{ item.title }}
-                                    </a>
+                                    <a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a>
                                 </li>
                                 {% endif %}
+                                {% else %}
+                                {% if not request.user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ item.url }}">{{ item.title }}</a>
+                                </li>
+                                {% endif %}
+                                {% endif %}
+                                {% endif %}
                                 {% endfor %}
-
                             </ul>
+
+
                         </li>
                     </ul>
                 </div>

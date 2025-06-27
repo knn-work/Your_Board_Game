@@ -5,7 +5,7 @@
         <!--           href="{{ item.url }}">-->
         <a class="nav-link d-flex align-items-center {% if request.path == item.url %}active fw-bold{% endif %}"
            href="{{ item.url }}">
-            <i class="bi {{ item.icon }} me-2"></i> {{ item.title }}
+            {{ item.title }}
         </a>
     </li>
     {% endfor %}
